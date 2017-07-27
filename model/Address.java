@@ -8,12 +8,8 @@ import java.util.Set;
 @Table(name = "addresses")
 public class Address {
     private Long id;
-    private String street;
+    private Street street;
     private Set<Employee> employees;
-
-    public Address(String street) {
-        this.street = street;
-    }
 
     public Address() {
         this.employees = new HashSet<>();
@@ -30,12 +26,12 @@ public class Address {
         this.id = id;
     }
 
-    @Column(name = "street")
-    public String getStreet() {
+    @OneToOne
+    public Street getStreet() {
         return street;
     }
 
-    public void setStreet(String street) {
+    public void setStreet(Street street) {
         this.street = street;
     }
 

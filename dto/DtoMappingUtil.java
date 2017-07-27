@@ -18,5 +18,8 @@ public final class DtoMappingUtil {
     }
 
 
+    public static<S,D> D convert(S source, Class<D> destinationClass){
+        return mapper.map(source, destinationClass);
+    }
 
 }

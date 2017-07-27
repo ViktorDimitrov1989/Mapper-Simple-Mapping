@@ -8,7 +8,7 @@ public class EmployeeDto implements Serializable {
     private String firstName;
     private String lastName;
     private BigDecimal salary;
-    private String addressStreet;
+    private String addressStreetName;
 
     public EmployeeDto() {
     }
@@ -37,12 +37,12 @@ public class EmployeeDto implements Serializable {
         this.salary = salary;
     }
 
-    public String getAddressStreet() {
-        return addressStreet;
+    public String getAddressStreetName() {
+        return addressStreetName;
     }
 
-    public void setAddressStreet(String addressStreet) {
-        this.addressStreet = addressStreet;
+    public void setAddressStreet(String addressStreetName) {
+        this.addressStreetName = addressStreetName;
     }
 
     @Override
@@ -50,6 +50,6 @@ public class EmployeeDto implements Serializable {
         return String.format("First name: %s\n" +
                 "Last name: %s\n" +
                 "Salary: %.2f\n" +
-                "Address: %s", this.firstName, this.lastName, this.salary, this.addressStreet);
+                "Address: %s", this.firstName, this.lastName, this.salary, this.addressStreetName);
     }
 }

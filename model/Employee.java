@@ -3,6 +3,8 @@ package app.model;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "employees")
@@ -13,8 +15,11 @@ public class Employee {
     private BigDecimal salary;
     private Date birthDate;
     private Address address;
+    private Employee manager;
+    private Set<Employee> managedEmployees;
 
     public Employee() {
+        this.managedEmployees = new HashSet<>();
     }
 
     public Employee(String firstName, String lastName, BigDecimal salary, Date birthDate, Address address) {
@@ -23,6 +28,7 @@ public class Employee {
         this.salary = salary;
         this.birthDate = birthDate;
         this.address = address;
+        this.managedEmployees = new HashSet<>();
     }
 
     @Id
@@ -80,6 +86,29 @@ public class Employee {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "manager_id")
+    public Employee getManager() {
+        return manager;
+    }
+
+    @OneToMany(mappedBy = "manager")
+    public Set<Employee> getManagedEmployees() {
+        return managedEmployees;
+    }
+
+    public void setManagedEmployees(Set<Employee> managedEmployees) {
+        this.managedEmployees = managedEmployees;
+    }
+
+    public void setManager(Employee manager) {
+        this.manager = manager;
+    }
+
+    public void addManagedEmployee(Employee employee){
+        this.managedEmployees.add(employee);
     }
 
     @Override
