@@ -78,7 +78,7 @@ public class Employee {
         this.birthDate = birthDate;
     }
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
     public Address getAddress() {
         return address;
@@ -88,13 +88,13 @@ public class Employee {
         this.address = address;
     }
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "manager_id")
     public Employee getManager() {
         return manager;
     }
 
-    @OneToMany(mappedBy = "manager")
+    @OneToMany(mappedBy = "manager", cascade = CascadeType.ALL)
     public Set<Employee> getManagedEmployees() {
         return managedEmployees;
     }
@@ -107,7 +107,7 @@ public class Employee {
         this.manager = manager;
     }
 
-    public void addManagedEmployee(Employee employee){
+    public void addManagedEmployee(Employee employee) {
         this.managedEmployees.add(employee);
     }
 

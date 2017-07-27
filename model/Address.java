@@ -26,7 +26,7 @@ public class Address {
         this.id = id;
     }
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     public Street getStreet() {
         return street;
     }
@@ -35,7 +35,7 @@ public class Address {
         this.street = street;
     }
 
-    @OneToMany(mappedBy = "address")
+    @OneToMany(mappedBy = "address", cascade = CascadeType.ALL)
     public Set<Employee> getEmployees() {
         return employees;
     }

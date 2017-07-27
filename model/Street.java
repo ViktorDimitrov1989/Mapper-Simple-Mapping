@@ -32,7 +32,7 @@ public class Street {
         this.name = name;
     }
 
-    @OneToOne(mappedBy = "street")
+    @OneToOne(mappedBy = "street", cascade = CascadeType.ALL)
     public Address getAddress() {
         return address;
     }
